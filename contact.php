@@ -1,0 +1,181 @@
+<?php
+session_start();
+session_regenerate_id();
+if(!isset($_SESSION['user']))      // if there is no valid session
+{
+    header("Location: errlogout.php");
+}
+?>
+
+<!DOCTYPE html> 
+<html>
+
+<head>
+  <title>Website of WestBengal</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  
+  <script type="text/javascript">
+
+function chkclk()
+{
+if(event.which==3)
+{
+alert("Click is blocked");
+user_answer.focus();
+return false;
+}
+}
+
+function checkNum()
+{
+var p=event.keyCode;
+if(p>=48 && p<=57)
+return true;
+else
+return false;
+}
+
+
+function setFoc()
+{
+your_name="";
+your_email="";
+your_message="";
+user_answer="";
+  your_name.focus();
+}
+
+function checkChar()
+{
+var p=event.keyCode;
+if((p>=65 && p<=90) || (p>=97 && p<=122) || (p>=48 && p<=57) || p==32 || p==64 || p==46 || p==95)
+return true;
+else
+return false;
+}
+
+
+function checkBlank()
+{
+if(document.getElementById("your_name").value=="")
+{
+alert("User Name Can't Be Blank");
+your_name.focus();
+}
+else if(document.getElementById("your_email").value=="")
+{
+alert("Email-id Can't Be Blank");
+your_email.focus();
+}
+else if(document.getElementById("your_message").value=="")
+{
+alert("Please write something");
+your_message.focus();
+}
+
+}
+
+
+  </script>
+
+</head>
+
+<body onload="setFoc()">
+ <form action="insert.php" method="POST">
+  <div id="main">
+
+    <header>
+    <div id="strapline">
+      <div id="welcome_slogan">
+        <h3><span>Website For Sonar Bangla</span></h3>
+      </div><!--close welcome_slogan-->
+      </div><!--close strapline-->    
+    <nav>
+      <div id="menubar">
+          <ul id="nav">
+            <li><a href="index1.php">Home</a></li>
+            <li><a href="ourwork.html">Our Work</a></li>
+            <li><a href="testimonials.php">Testimonials</a></li>
+            <li><a href="projects.php">Projects</a></li>
+            <li class="current"><a href="contact.php">Contact Us</a></li>
+                <li><a href="mylogout.php">Log Out</a></li>
+          </ul>
+        </div><!--close menubar-->  
+      </nav>
+    </header>
+    
+	<div id="site_content">    
+    
+    <div class="sidebar_container">       
+    <div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Welcome</h2>
+            <p>A very warm welcome to my new website. Please have a look around, any feedback is much appreciated.</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->        
+    <div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Latest Update</h2>
+            <h3>May 2015</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim.</p>         
+      </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+    <div class="sidebar">
+          <div class="sidebar_item">
+            <h3>June 2015</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim.</p>         
+      </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->      
+        <div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Contact</h2>
+            <p>Phone: +91-9874632803</p>
+            <p>Email: <a href="mailto:mallikkumargourab@gmail.com">mallikkumargourab@gmail.com</a></p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+       </div><!--close sidebar_container--> 
+	   
+       <div class="slideshow">
+      <ul class="slideshow">
+          <li class="show"><img width="680" height="250" src="images/home_1.jpg" alt="&quot;Be good to ownself, because you are answerable to you only&quot;" /></li>
+          <li><img width="680" height="250" src="images/home_2.jpg" alt="&quot;Be good to ownself, because you are answerable to you only&quot;" /></li>
+          
+          <li><img width="680" height="250" src="images/DSCN4745.JPG" alt="&quot;Be good to ownself, because you are answerable to you only&quot;" /></li>
+          <li><img width="680" height="250" src="images/DSCN4834.JPG" alt="&quot;Be good to ownself, because you are answerable to you only&quot;" /></li>
+        </ul> 
+    </div>
+	
+	  <div id="content">
+        <div class="content_item">
+		  <div class="form_settings">
+            <h2>Contact Us</h2>
+            <p style="padding-bottom: 15px;">A contact form requires some method of emailing the contents of the form to an email address. The most common way to do this is to use some kind of server script (PHP for example). I would be happy to send you the PHP code for the contact form for your chosen template, I charge &pound;20.00GBP for this. Simply <a href="http://go4idea.blogspot.in/">contact me</a> for more details.</p>           
+			<p><span>Name</span><input class="contact" type="text" placeholder="Enter your name" name="your_name" id="your_name" value="" onkeypress="return checkChar()" /></p>
+            <p><span>Email Address</span><input class="contact" type="text" placeholder="Enter your email address" name="your_email" id="your_email" value="" onkeypress="return checkChar()" /></p>
+			<p><span>Message (not more than 500 characters)</span><textarea class="contact textarea" placeholder="Put your message here"    rows="8" cols="50" name="your_message" id="your_message"></textarea></p>
+            <p style="padding: 10px 0 10px 0;">Please enter the answer to this simple maths question (to prevent spam)</p>
+			<p><span>Maths Question: 9 + 3 = ?</span><input type="text" id="user_answer" placeholder="your answer" class="contact" onkeypress="return checkNum()" onmousedown="return chkclk()" /><input type="hidden" name="answer" value="4d76fe9775" /></p>
+     
+            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="Send" onclick="checkBlank()" /></p>
+            </form>
+          </div><!--close form_settings-->
+		</div><!--close content_item-->
+      </div><!--close content-->   
+	</div><!--close site_content-->  	
+    <footer>
+	  <a href="index1.php">Home</a> | <a href="">Our Work</a> | <a href="testimonials.php">Testimonials</a> | <a href="projects.php">Projects</a> | <a href="contact.php">Contact</a><br/><br/>
+    <a href="http://fotogrph.com">Images</a> |  <a href="http://www.heartinternet.co.uk/web-hosting/">Web Hosting</a>  | website by <a href="http://www.freehtml5templates.co.uk">Softech India Pvt Ltd.</a>
+    </footer>  
+  </div><!--close main-->
+
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/image_slide.js"></script>	
+  
+</body>
+</html>

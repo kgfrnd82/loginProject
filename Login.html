@@ -1,0 +1,124 @@
+<html>
+<head>
+<style>
+body{
+background-image: url("images/DSCN4646.JPG");
+background-repeat: repeat-x;
+background-position: center;
+}
+button
+{
+color: red;
+text-shadow: 2px 2px yellow;
+background-color: blue;
+font-size: 25px;
+}
+p
+{
+color: yellow;
+font-size: 25px;
+text-shadow: 2px 2px red;
+width: 150px;
+}
+input
+{
+color: yellow;
+background-color: black;
+font-size: 20px;
+}
+</style>
+</head>
+<body onload="setFoc()">
+<form action="mylogin.php" method="POST">
+<script>
+function chkclk()
+{
+if(event.which==3)
+{
+alert("Click is blocked");
+txtusrnm.focus();
+return false;
+}
+}
+
+function checkChar()
+{
+var p=event.keyCode;
+if((p>=65 && p<=90) || (p>=97 && p<=122) || (p>=48 && p<=57) || p==95)
+return true;
+else
+return false;
+}
+
+/*function checkData()
+{
+var usr=document.getElementById("txtusrnm").value;
+var pwd=document.getElementById("txtpwd").value;
+if(usr='kumar' && pwd=='kumar')
+alert("Egiye chalo");
+else
+alert("Tham beta")
+}*/
+
+function setFoc()
+{
+txtusrnm.focus();
+}
+
+function checkBlank()
+{
+if(document.getElementById("txtusrnm").value=="")
+{
+alert("User Name Can't Be Blank");
+txtusrnm.focus();
+return false;
+}
+else if(document.getElementById("txtpwd").value=="")
+{
+alert("Password Can't Be Blank");
+txtpwd.focus();
+return false;
+}
+return true;
+}
+
+function settxtpwd()
+{
+if(event.keyCode==13)
+{
+if(document.getElementById("txtusrnm").value=="")
+alert("User Name Can't Be Blank");
+else
+txtpwd.focus();
+}
+}
+
+function setbtn()
+{
+if(event.keyCode==13)
+{
+if(document.getElementById("txtpwd").value=="")
+alert("Password Can't Be Blank");
+else
+btn.focus();
+}
+}
+
+</script>
+
+<p>User Name</p><abbr title="Put your user name"><input type="text" name="txtusrnm" id="txtusrnm" placeholder="Enter your user name" onkeypress="return checkChar()" onkeydown="settxtpwd()" onmousedown="return chkclk()"></abbr>
+
+</br>
+
+<p>Password</p><abbr title="Put your Password"><input type="password" name="txtpwd" id="txtpwd" onkeypress="return checkChar()" placeholder="Enter your password" onkeydown="setbtn()" onmousedown="return chkclk()"></abbr>
+
+</br>
+</br>
+<abbr title="Click to sign in"><button type="submit" id="btn" onclick="return checkBlank()">L O G I N</button></abbr>
+</br>
+</br>
+<h2><a href="registration.php">Registration form</a></h2>
+
+</form>
+</body>
+</html>
